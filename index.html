@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="./catsweeper.js"></script>
+
+    <link href="./static/cat.ico" rel="icon">
+    <link href="./static/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <title>Catsweeper</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <div class="navbar-brand">
+            <img src="./static/cat.ico" width="25" height="25" alt="">
+            Catsweeper
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a id="nav-rules" class="nav-link" href="javascript:void(0)">Rules</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-highscores" class="nav-link" href="javascript:void(0)">Your Highscores</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar fixed-top navbar-light bg-light">
+        <div class="navbar-brand">
+            <h3>Start a new game:&nbsp;
+                <a href="javascript:void(0)" class="badge badge-dark" id="level" data-level="beginner">Beginner</a>
+                <a href="javascript:void(0)" class="badge badge-dark" id="level" data-level="intermediate">Intermediate</a>
+                <a href="javascript:void(0)" class="badge badge-dark" id="level" data-level="expert">Expert</a>
+            </h3>
+        </div>
+    </nav>
+
+    <main>
+        <div class="introduction">
+            <p class="card-text"><b>POV:&nbsp;</b>You're allergic to cats. If you touch a cat, you'll die.</p>
+        </div>
+
+        <div class="center">
+
+        </div>
+    </main>
+
+
+    <!-- Game Over Modal HTML -->
+    <div id="gameOver" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">You lost!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You can try again.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Modal HTML -->
+    <div id="victory" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">You won!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You can see your best scores form this session.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="nav-highscores" type="button" class="btn btn-secondary" data-dismiss="modal">See scores</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highscores Modal HTML -->
+    <div id="highscores" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your best scores this session:</h5>
+                    <button id="nav-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="scoreList" class="modal-body">
+                    <p>You have no scores yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rules Modal HTML -->
+    <div id="rules" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rules:</h5>
+                    <button id="nav-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Catsweeper, much like Minesweeper, is a game where cats are hidden under square tiles. Safe tiles have numbers on them, which show how many cats are on the neighbouring tiles. If there are no cats on the neighbouring tiles, they will open automatically. Your first click is always safe - there is no cat there.
+                    </p>
+                    <p>
+                        If you're sure that a cat is hiding under a tile, you can mark it with a flag by right clicking or by switching to flag mode using the button in the middle of the game header.
+                    </p>
+                    <p>
+                        <b>Remember that you're very allergic to cats. If you click on one, you lose the game!</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
