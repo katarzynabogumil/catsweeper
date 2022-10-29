@@ -169,9 +169,9 @@ function unflag(tile) {
 function displayBoard(board) {
     let table = document.querySelector(".center");
     table.innerHTML = "";
-    table.innerHTML += (`<table><tbody id="board"><thead><tr><th><span id="cats">CATS: ${remainingCats}</span><span id="buttons">
+    table.innerHTML += (`<table><thead><tr><th><span id="cats">CATS: ${remainingCats}</span><span id="buttons">
     <div class="mode mouse"></div><div class="mode flagged"></div>
-    </span><span id="time">TIME: 0</span></th></tr></thead></tbody></table>`);
+    </span><span id="time">TIME: 0</span></th></tr></thead><tbody id="board"></tbody></table>`);
     document.querySelector(".introduction").innerHTML = "";
     let row;
     let rows = document.querySelector("#board");
