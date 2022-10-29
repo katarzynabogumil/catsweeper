@@ -119,7 +119,7 @@ th {
     height: 42px;
     max-height: 42px;
     border: 5px solid #808080;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 1000;
     color: #ffffff;
     white-space: nowrap;
@@ -152,7 +152,7 @@ th {
 }
 
 #cats {
-    top: 5px;
+    top: 8px;
     left: 5%;
     display: inline-block;
     position: absolute;
@@ -169,7 +169,7 @@ th {
 }
 
 #time {
-    top: 5px;
+    top: 8px;
     right: 5%;
     display: inline-block;
     position: absolute;
