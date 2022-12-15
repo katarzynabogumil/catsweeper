@@ -12,7 +12,7 @@ The game is written in mostly JavaScript and hosted on a static website, using H
 
 #### Deployment
 This is a static webpage with pure JS code. There are no prerequisites for local deployment - simply check out this repository and open index.html in your browser of choice.
-
+[It is also hosted here.](https://katarzynabogumil.github.io/catsweeper/)
 
 #### Files
 * Main webpage: index.html
